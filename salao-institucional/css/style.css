@@ -1,0 +1,310 @@
+/* Estilos complementares - Salão Institucional */
+/* O layout principal usa Tailwind via CDN */
+
+/* ========== Animações de entrada ========== */
+@keyframes heroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sectionEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero: estado inicial (antes do load) */
+.hero-entrance {
+  opacity: 0;
+  transform: translateY(28px);
+}
+.page-loaded .hero-entrance-1 {
+  animation: heroEntrance 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+}
+.page-loaded .hero-entrance-2 {
+  animation: heroEntrance 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.25s forwards;
+}
+.page-loaded .hero-entrance-3 {
+  animation: heroEntrance 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
+}
+.page-loaded .hero-entrance-4 {
+  animation: heroEntrance 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.55s forwards;
+}
+
+/* Seções: entram ao aparecer no viewport */
+.section-entrance {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.section-entrance.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-entrance,
+  .section-entrance {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .page-loaded .hero-entrance { animation: none; opacity: 1; transform: none; }
+  .section-entrance.is-visible { opacity: 1; transform: none; }
+}
+
+/* Skip link - visível apenas no foco (teclado) */
+.skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  background: #e91e8c;
+  color: #fff;
+  border-radius: 0.25rem;
+  font-weight: 500;
+}
+
+/* Logo "Elegante" - gradiente rosa → dourado */
+.hero-logo-gradient {
+  background: linear-gradient(90deg, #e91e8c 0%, #e8b4c4 40%, #d4a853 70%, #e8c97a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero: badge "Transformando Beleza em Arte" - fundo escuro, borda clara */
+.hero-tagline-badge {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+/* Botão hero primário: gradiente vermelho → rosa */
+.btn-hero-primary {
+  background: linear-gradient(90deg, #dc2626 0%, #ec4899 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(220, 38, 102, 0.4);
+}
+
+/* Botão hero secundário */
+.btn-hero-secondary {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btn-hero-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+}
+
+/* Rolagem de palavras no hero: uma linha visível, resto escondido */
+.hero-roll-wrap {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+  vertical-align: bottom;
+}
+.hero-roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-roll-word {
+  display: block;
+  height: 1em;
+  line-height: 1em;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #f472b6 0%, #fb923c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero: imagem de fundo do salão (interior Lígia Feitosa) - path definido no HTML */
+.hero-bg {
+  background-color: #2d2d2d;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Banner de números: gradiente rosa → roxo */
+.stats-banner {
+  background: linear-gradient(90deg, #e91e8c 0%, #c41a75 40%, #9c27b0 70%, #7b1fa2 100%);
+}
+
+/* Botão Instagram: gradiente roxo → rosa */
+.btn-instagram {
+  background: linear-gradient(90deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-instagram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(253, 29, 29, 0.35);
+}
+
+/* Botão Facebook (redes sociais) */
+.btn-facebook {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btn-facebook:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(24, 119, 242, 0.4);
+}
+
+/* Formulário: botão gradiente rosa → magenta */
+.btn-form {
+  background: linear-gradient(90deg, #e91e8c 0%, #c41a75 50%, #ad1457 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(233, 30, 140, 0.4);
+}
+
+/* Cards de serviços: hover elegante (levitação + sombra) */
+.card-servico {
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+  border: 1px solid transparent;
+}
+.card-servico:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(233, 30, 140, 0.08);
+  border-color: rgba(233, 30, 140, 0.12);
+}
+.card-servico:hover a[href="#contato"] {
+  color: #be185d;
+}
+
+/* Footer: gradiente roxo-azul → vermelho escuro */
+.footer-gradient {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2d1b4e 40%, #4a1942 70%, #6b2d3e 100%);
+}
+
+/* Nome da marca no footer: laranja-dourado */
+.footer-brand {
+  color: #e8a84a;
+}
+
+/* Select com seta customizada */
+.form-agendamento select.form-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234b5563'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+.form-agendamento select.form-input:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e91e8c'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+}
+
+/* Suporte a redução de movimento (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visível para teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #e91e8c;
+  outline-offset: 2px;
+}
+
+/* Imagens da galeria - lazy load placeholder suave */
+img[loading="lazy"] {
+  background: #f3f4f6;
+}
+
+/* Header: transparente no topo, fundo branco ao rolar */
+.header {
+  background: transparent;
+  border: none;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
+}
+.header.scrolled {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.header-logo-beleza,
+.header-nav-link {
+  transition: color 0.3s ease;
+}
+
+/* Logo e links no topo (transparente) = claros */
+.header-logo-beleza { color: #fff; }
+.header.scrolled .header-logo-beleza { color: #1a1a1a; }
+
+.header-icon { color: #e8b4c4; }
+.header.scrolled .header-icon { color: #e8b4c4; }
+
+.header-nav-link { color: rgba(255, 255, 255, 0.9); }
+.header-nav-link:hover { color: #fff; }
+.header.scrolled .header-nav-link { color: #374151; }
+.header.scrolled .header-nav-link:hover { color: #e91e8c; }
+.header.scrolled .header-nav-link.active { color: #e91e8c; border-bottom-color: #e91e8c !important; }
+
+.header-btn-menu {
+  color: #fff;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.header-btn-menu:hover { background: rgba(255, 255, 255, 0.1); }
+.header.scrolled .header-btn-menu { color: #4b5563; }
+.header.scrolled .header-btn-menu:hover { background: #f3f4f6; }
+
+/* Menu mobile: no topo = fundo escuro; ao rolar = fundo branco */
+.header-mobile { transition: background 0.3s ease, border-color 0.3s ease; }
+.header.scrolled .header-mobile {
+  background: #fff;
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+.header-mobile-link { transition: color 0.2s ease; }
+.header.scrolled .header-mobile-link { color: #374151; }
+.header.scrolled .header-mobile-link:hover { color: #e91e8c; }
+
+/* Botão voltar ao topo */
+#btn-topo {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+#btn-topo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(190, 18, 60, 0.35);
+}
